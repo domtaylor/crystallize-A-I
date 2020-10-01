@@ -38,8 +38,10 @@ export default function Payment() {
   const locale = useLocale();
   const router = useRouter();
   const { cart, actions, metadata } = useBasket();
-  const [shippingAddressData, setShippingAddressData] = useState({})
+  const [setShippingAddressData] = useState({})
   const [selectedPaymentProvider, setSelectedPaymentProvider] = useState(null);
+  const [checkedShippingAddress, setCheckedShippingAddress] = useState(null);
+
   const [state, setState] = useState({
     firstName: '',
     lastName: '',
@@ -154,6 +156,7 @@ export default function Payment() {
     await setCheckedShippingAddress(addressId)
   }
 
+
   return (
     <Inner>
       <form noValidate>
@@ -194,43 +197,8 @@ export default function Payment() {
           </InputGroup>
           <h2>Shipping address</h2>
           <InputGroup>
-            {addressesList &&
-              addressesList.length > 0 &&
-              addressesList.map(el => (
-                <ul key={el.id}>
-                  <li>
-                    <Input
-                      type="radio"
-                      name={el.id}
-                      id={el.id}
-                      value={el.name}
-                      checked={checkedShippingAddress === el.id}
-                      onChange={() =>
-                        selectShippingAddress(el.id, el)
-                      }
-                    />
-                    <Label htmlFor={el.id}>{t('el.id')}
-                      <div>
-                        {el.first_name} {el.last_name}
-                      </div>
-                      <div>
-                        {el.phone_number}
-                      </div>
-                      <div>{el.line_1}</div>
-                      <div>
-                        {el.city}, {el.county}, {el.country}
-                      </div>
-                      <div>{el.postcode}</div>
-                    </Label>
-                  </li>
-                </ul>
-              ))}
+            <AddressFields />
           </InputGroup>
-          <AddressFields
-            type="shipping_address"
-            form={form}
-            showAddressForm={false}
-          />
         </Row>
       </form>
 
