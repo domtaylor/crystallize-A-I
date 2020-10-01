@@ -1,0 +1,25 @@
+{
+   "locales": [
+      {
+         "isDefault": true,
+         "displayName": "en",
+         "urlPrefix": "en",
+         "appLanguage": "en-US",
+         "crystallizeCatalogueLanguage": "en",
+         "defaultCurrency": "USD"
+      },
+      {
+         "displayName": " no",
+         "urlPrefix": " no",
+         "appLanguage": "en-US",
+         "crystallizeCatalogueLanguage": " no",
+         "defaultCurrency": "USD"
+      }
+   ],
+   "paymentProviders": [
+      "stripe",
+      "mollie",
+      "klarna",
+      "vipps"
+   ]
+}
